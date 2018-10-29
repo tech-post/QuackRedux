@@ -25,7 +25,13 @@ class Feed extends Component {
       let dateObject = new Date(Date.parse(date));
       let dateReadable = dateObject.toDateString();
       // We haven't placed dateReadable in the div yet (still working on layout UX), but it's ready to insert.
-      allPosts.push(<div key={i} className="questionBox"> <i className="fas fa-arrow-up" key={i}></i> <strong> {likesCount} </strong><i className="fas fa-arrow-down" key={i}></i> <span className='question' key={i}>{posts[i].text}<br></br>{posts[i].tags}<br></br>{posts[i].name}<hr></hr></span></div>);
+      allPosts.push(
+        <div key={i} className="questionBox"> 
+          <i className="fas fa-arrow-up" ></i> 
+          <strong> {likesCount} </strong>
+          <i className="fas fa-arrow-down" ></i> 
+          <span className='question' >{posts[i].text}<br></br>{posts[i].tags}<br></br>{posts[i].name}<hr></hr></span>
+        </div>);
     }
     return (
       <div className="feed-container">
