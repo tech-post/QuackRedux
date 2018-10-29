@@ -6,7 +6,6 @@ class SuccessReg extends Component {
       <div className="successReg-container">
         <h2>User successfully Registered!</h2>
       </div>
-
     )
   }
 }
