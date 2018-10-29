@@ -11,18 +11,15 @@ class Login extends Component {
       password: '',
       errors: {}
     };
-
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     if (this.props.auth.isAuthenticated) {
       this.props.history.push('/feed')
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps = (nextProps) => {
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push('/feed');
     }
@@ -32,11 +29,11 @@ class Login extends Component {
     }
   }
 
-  onChange(e) {
+  onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  onSubmit(e) {
+  onSubmit = (e) => {
     e.preventDefault();
 
     const existingUser = {

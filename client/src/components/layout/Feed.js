@@ -29,15 +29,12 @@ class Feed extends Component {
     }
     return (
       <div className="feed-container">
-      
         <h3>{this.props.auth.user.name} successfully Logged in!</h3>
         {allPosts}
       </div>
-
     )
   }
 };
-
 
 const mapStateToProps = state => ({ 
   auth: state.auth,
