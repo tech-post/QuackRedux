@@ -6,5 +6,5 @@ import feedReducer from './feedReducer';
 export default combineReducers({
   auth: authReducer,
   errors: errorReducer,
-  feed: feedReducer
+  feed: feedReducer,
 });

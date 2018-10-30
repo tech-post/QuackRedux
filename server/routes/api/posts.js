@@ -36,8 +36,9 @@ router.get('/', (req, res) => {
 // @desc    Get post by id
 // @access  Public
 router.get('/:id', (req, res) => {
-  Post.find(req.params.id)
-    .then(posts => res.json(posts))
+  Post.findById(req.params.id)
+  // Post.findOne({ _id: req.params.id })
+    .then(post => res.json(post))
     .catch(err => res.status(404).json({
       nopostfound: 'No post found with that ID'
     }));
@@ -79,42 +80,42 @@ router.delete('/:id', passport.authenticate('jwt', {
 router.post('/like/:id', passport.authenticate('jwt', {
   session: false
 }), (req, res) => {
+  console.log('req', req.user.id)
   User.findOne({
-      user: req.user.id
-    })
-    .then(user => {
-      Post.findById(req.params.id)
-        .then(post => {
-          if (post.likes.filter(like => like.user.toString() === req.user.id).length > 0) {
-            return res.status(400).json({
-              alreadyliked: 'User already liked this post'
-            });
-          }
-
-          // Add user id to likes array
-          post.likes.unshift({
-            user: req.user.id
+    user: req.user.id
+  }).then(user => {
+    console.log(user)
+    console.log(req.params.id)
+    Post.findById(req.params.id)
+      .then(post => {
+        console.log(post)
+        if (post.likes.filter(like => like.user.toString() === req.user.id).length > 0) {
+          return res.status(409).json({
+            alreadyliked: 'User already liked this post'
           });
+        }
 
-          post.save().then(post => res.json(post));
-        })
-        .catch(err => res.status(404).json({
-          postnotfound: 'no post found'
-        }));
-    })
+        // Add user id to likes array
+        post.likes.unshift({
+          user: req.user.id
+        });
+
+        post.save().then(post => res.json(post));
+      })
+      .catch(err => res.status(404).json({
+        postnotfound: 'no post found'
+      }));
+  })
 });
 // @route   POST api/posts/unlike/:id
 // @desc    Unlike post
 // @access  Private
-router.post(
-  "/unlike/:id",
-  passport.authenticate("jwt", {
-    session: false
-  }),
-  (req, res) => {
-    User.findOne({
-      user: req.user.id
-    }).then(user => {
+router.post("/unlike/:id", passport.authenticate("jwt", {
+  session: false
+}), (req, res) => {
+  User.findOne({
+    user: req.user.id
+  }).then(user => {
       Post.findById(req.params.id)
         .then(post => {
           if (
