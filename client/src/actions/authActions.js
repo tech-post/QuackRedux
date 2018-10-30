@@ -51,3 +51,11 @@ export const setCurrentUser = decoded => {
     payload: decoded
   };
 };
+
+
+export const removeCurrentUser = decoded => {
+  return {
+    type: REMOVE_CURRENT_USER,
+    payload: decoded
+  };
+};
