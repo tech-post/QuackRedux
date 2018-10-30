@@ -9,6 +9,12 @@ class Feed extends Component {
     this.state = {};
   }
 
+  componentWillMount(){
+    if (this.props.auth.isAuthenticated === false) {
+      this.props.history.push('/login');
+    }
+  }
+
   componentDidMount() {
     this.props.getFeed();
   }
