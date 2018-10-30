@@ -5,12 +5,9 @@ import { removeCurrentUser } from '../../actions/authActions';
 import styles from './Navbar.css';
 
 class Navbar extends Component {
-  constructor() {
-    super();
-  }
+
 
   HandleLinkClick = (e) => {
-    console.log(e.target.dataset.link);
     const link = e.target.dataset.link;
     this.props.history.push('/' + link);
   }
