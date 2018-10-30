@@ -1,0 +1,26 @@
+#nav-bar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #a9e8f3;
+  padding: 12px;
+  margin-bottom: 25px;
+}
+#logo{
+  cursor: pointer;
+}
+#search-bar{
+  border: 1px solid lightgrey;
+  padding: 5px;
+  border-radius: 5px;
+}
+#search-bar:focus{
+  outline: none;
+}
+#nav-links button{
+  padding: 5px;
+  margin: 0 5px;
+  cursor: pointer;
+  border: none;
+  background-color: #a9e8f3;
+}
