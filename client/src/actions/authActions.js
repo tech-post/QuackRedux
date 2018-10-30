@@ -2,7 +2,7 @@ import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 
-import { GET_ERRORS, SET_CURRENT_USER } from './types';
+import { GET_ERRORS, SET_CURRENT_USER, REMOVE_CURRENT_USER } from './types';
 
 // Register a new user function 
 
@@ -43,6 +43,14 @@ export const loginUser = loginData => dispatch => {
     );
 }
 
+// export const logOutUser = () => dispatch => {
+//   axios
+//     .get('/api/users/test')
+//     .then(res => {
+//       console.log(res);
+//     });
+// };
+
 // 
 
 export const setCurrentUser = decoded => {
@@ -51,3 +59,9 @@ export const setCurrentUser = decoded => {
     payload: decoded
   };
 };
+
+export const removeCurrentUser = () => {
+  return {
+    type: REMOVE_CURRENT_USER,
+  };
+}

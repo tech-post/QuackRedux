@@ -13,6 +13,7 @@ import Login from './components/authorization/Login';
 import Splash from './components/layout/Splash';
 import SuccessReg from './components/layout/SuccessReg';
 import Feed from './components/layout/Feed';
+import Navbar from './components/layout/Navbar';
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -28,15 +29,16 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-      <Router>
-        <div className="App">
-          <Route exact path="/" component = {Splash}/>
-          <Route exact path="/register" component = {Registration}/>
-          <Route exact path="/successreg" component = {SuccessReg}/>
-          <Route exact path="/feed" component = {Feed}/>
-          <Route exact path="/login" component = {Login}/>
-        </div>
-      </Router>
+        <Router>
+          <div className="App">
+            <Navbar />
+            <Route exact path="/" component={Splash} />
+            <Route exact path="/register" component={Registration} />
+            <Route exact path="/successreg" component={SuccessReg} />
+            <Route exact path="/feed" component={Feed} />
+            <Route exact path="/login" component={Login} />
+          </div>
+        </Router>
       </Provider>
     );
   }
