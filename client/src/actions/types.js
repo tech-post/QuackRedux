@@ -1,5 +1,8 @@
 export const GET_ERRORS = 'GET_ERRORS';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
-export const GET_FEED = 'GET_FEED';
 export const INCREMENT_LIKES = 'INCREMENT_LIKES';
 export const DECREMENT_LIKES = 'DECREMENT_LIKES';
+export const GET_FEED = 'GET_FEED';
+export const CREATE_POST = 'CREATE_POST';
+export const GET_CURRENT_USER_POSTS = 'GET_CURRENT_USER_POSTS';
+export const REMOVE_CURRENT_USER = 'REMOVE_CURRENT_USER';

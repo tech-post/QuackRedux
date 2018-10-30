@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getFeed, incrementLikes, decrementLikes } from '../../actions/postActions';
+import PostBox from './PostBox.jsx';
 
 class Feed extends Component {
   constructor() {
     super();
     this.state = {};
+  }
+
+  componentWillMount(){
+    if (this.props.auth.isAuthenticated === false) {
+      this.props.history.push('/login');
+    }
   }
 
   componentDidMount() {
@@ -70,6 +77,7 @@ class Feed extends Component {
       <div className="feed-container">
         <h3>{this.props.auth.user.name} successfully Logged in!</h3>
         {allPosts}
+        <PostBox />
       </div>
     )
   }

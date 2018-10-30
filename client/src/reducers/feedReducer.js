@@ -1,4 +1,4 @@
-import { GET_FEED, INCREMENT_LIKES, DECREMENT_LIKES } from '../actions/types';
+import { GET_FEED, CREATE_POST, GET_CURRENT_USER_POSTS, INCREMENT_LIKES, DECREMENT_LIKES } from '../actions/types';
 
 const initialState = {};
 
@@ -6,6 +6,7 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case GET_FEED:
       return action.payload;
+
     case INCREMENT_LIKES:
       let newState1 = state.slice();
       let element1 = newState1.find((e, i) => e._id === action.payload._id)
@@ -22,6 +23,17 @@ export default function(state = initialState, action) {
         newState2[index2] = action.payload;
       }
       return newState2;
+
+    case CREATE_POST: 
+      let postsarray = state.slice();
+      postsarray.push(action.payload);
+      return postsarray;
+      
+    case GET_CURRENT_USER_POSTS:
+      return {
+        ...state
+      }
+
     default:
       return state;
   }
