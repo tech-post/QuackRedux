@@ -151,11 +151,14 @@ router.post(
 router.post('/', passport.authenticate('jwt', {
   session: false
 }), (req, res) => {
+  
+  req.body = JSON.parse(Object.keys(req.body)[0]);
+
   const {
     errors,
     isValid
   } = validatePostInput(req.body);
-
+  
   // Check Validation
   if (!isValid) {
     return res.status(400).json(errors);
