@@ -12,8 +12,11 @@ class Navbar extends Component {
   }
 
   HandleLinkClick = (e) => {
-    const link = e.target.dataset.link;
-    this.props.history.push('/' + link);
+    this.props.history.push('/feed');
+  }
+
+  HandleCreatePost = (e) => {
+    this.props.history.push('/feed');
   }
 
   HandleLogOut = (e) => {
@@ -23,7 +26,6 @@ class Navbar extends Component {
   HandleClickMyPosts = (e) => {
     this.props.history.push('/userdashboard');
   }
-
 
   render() {
 
@@ -37,7 +39,7 @@ class Navbar extends Component {
             <input id="search-bar" type="search" placeholder="Search Posts" />
 
             <div id="nav-links">
-              <button>Create Post</button>
+              <button onClick={(e) => { this.HandleCreatePost(e); }}>Create Post</button>
               <button onClick={(e) => { this.HandleClickMyPosts(e); }}>My Posts</button>
               <button onClick={(e) => { this.HandleLogOut(e); }}>Log Out</button>
             </div>
