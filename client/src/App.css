@@ -3,70 +3,115 @@
 }
 
 body {
-  background: #1D9FD1;
   height: 100vh;
   align-items: center;
   justify-content: center;
   overflow: scroll;
-  font-family: 'Avenir' !important;
+  font-family: 'Avenir';
+  /* font-size: 14px; */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+h1 {
+  margin-top: 40px;
+}
+
 .feed-container {
   left: 220px;
   position: relative;
   width: 80%;
+  font-family: 'Avenir';
+}
+
+.userDashboard {
+  left: 220px;
+  position: relative;
 }
 
 .App {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.questionBox {
-  -webkit-box-shadow: 3px 14px 22px -13px rgba(0,0,0,0.43);
-  -moz-box-shadow: 3px 14px 22px -13px rgba(0,0,0,0.43);
-  box-shadow: 3px 14px 22px -13px rgba(0,0,0,0.43);
-}
-
 .title:hover{
-  color: white;
-  text-decoration: underline;
+  color: #f54040;
   cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .box {
-  background-color: pink;
+  font-family: 'Avenir';
   margin: 20px;
+  text-align: left;
+  margin-left: 250px;
 }
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+.postBox {
+  height: 220px; 
+  width: 500px; 
+  padding: 30px;
+  margin: 30px;
+  border-radius: 10px;
+  border: 1px solid #ebebeb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.postBoxTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.postBoxLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  margin-left: 10px;
+}
+
+.postBoxRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.postBoxBottom {
+  padding-top: 10px;
+}
+
+textarea {
+  height: 40px; 
+  width: 400px; 
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ebebeb;
+  transition: box-shadow .1s;
+  margin: 10px;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.submit-button {
+  background-color: #f54040;
+  color: white;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 10px;
+}
+.submit-button:focus {
+  outline: none;
+}
+

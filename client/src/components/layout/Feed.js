@@ -67,8 +67,6 @@ class Feed extends Component {
 
     return (
       <div className="feed-container">
-        <h2><strong>Hello {this.props.auth.user.name} !</strong></h2>
-        <br></br>
         <PostBox />
         <hr></hr>
         {allPosts}
