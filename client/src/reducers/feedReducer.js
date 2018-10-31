@@ -31,7 +31,7 @@ export default function(state = initialState, action) {
 
     case CREATE_POST: 
       let postsArray = state.slice();
-      postsArray.push(action.payload);
+      postsArray.unshift(action.payload);
       return postsArray;
       
     case GET_CURRENT_USER_POSTS:

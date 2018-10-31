@@ -29,21 +29,11 @@ class Feed extends Component {
   handleClickUp = (e) => {
     console.log(e.target.id);
     this.props.incrementLikes(e.target.id);
-
-    // let newCount = this.state.likesCount + 1
-    // this.setState({
-    //   likesCount: newCount
-    // })
   }
 
   handleClickDown = (e) => {
     console.log(e.target.id);
     this.props.decrementLikes(e.target.id);
-
-    // let newCount = this.state.likesCount - 1
-    // this.setState({
-    //   likesCount: newCount
-    // })
   }
 
   render() {
@@ -56,7 +46,7 @@ class Feed extends Component {
       let date = new Date(Date.parse(posts[i].date));
       let dateObject = new Date(Date.parse(date));
       let dateReadable = dateObject.toDateString();
-      // We haven't placed dateReadable in the div yet (still working on layout UX), but it's ready to insert.
+
       let top3Comments = [];
       if (posts[i].comments.length > 0) {
         for (let j = 0; j < 3; j++) {
