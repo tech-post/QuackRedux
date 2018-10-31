@@ -1,9 +1,10 @@
-import { GET_FEED, CREATE_POST, GET_CURRENT_USER_POSTS, INCREMENT_LIKES, DECREMENT_LIKES } from '../actions/types';
+import { GET_FEED, CREATE_POST, INCREMENT_LIKES, DECREMENT_LIKES } from '../actions/types';
 
 const initialState = {};
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    
     case GET_FEED:
       return action.payload;
 
@@ -34,11 +35,6 @@ export default function(state = initialState, action) {
       postsArray.unshift(action.payload);
       return postsArray;
       
-    case GET_CURRENT_USER_POSTS:
-      return {
-        ...state
-      }
-
     default:
       return state;
   }

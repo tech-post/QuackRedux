@@ -33,7 +33,7 @@ router.get('/', (req, res) => {
 });
 
 // @route   GET api/posts/:id
-// @desc    Get post by id
+// @desc    Get post by post's id
 // @access  Public
 router.get('/:id', (req, res) => {
   Post.findById(req.params.id)
@@ -42,6 +42,20 @@ router.get('/:id', (req, res) => {
     .catch(err => res.status(404).json({
       nopostfound: 'No post found with that ID'
     }));
+});
+
+// @route   GET api/posts/user/:userid
+// @desc    Get post by userid
+// @access  Public
+router.get('/user/:userid', (req, res) => {
+  Post.find({ user: req.params.userid }, 
+  (err, data) => {
+    if (err || data == null) {
+      res.status(404); res.send('No post found with that userid');
+    } else {
+      res.json(data);
+    }
+  })
 });
 
 // @route   DELETE api/posts/:id
