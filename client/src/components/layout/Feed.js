@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getFeed, incrementLikes, decrementLikes } from '../../actions/postActions';
+// import { getFeed, incrementLikes, decrementLikes } from '../../actions/postActions';
+import * as postActions from '../../actions/postActions';
 import PostBox from './PostBox.jsx';
 
 class Feed extends Component {
@@ -27,7 +28,6 @@ class Feed extends Component {
 
   handleClickUp = (e) => {
     console.log(e.target.id);
-    console.log(localStorage['jwtToken']);
     this.props.incrementLikes(e.target.id);
 
     // let newCount = this.state.likesCount + 1
@@ -38,7 +38,6 @@ class Feed extends Component {
 
   handleClickDown = (e) => {
     console.log(e.target.id);
-    console.log(localStorage['jwtToken']);
     this.props.decrementLikes(e.target.id);
 
     // let newCount = this.state.likesCount - 1
@@ -68,7 +67,7 @@ class Feed extends Component {
           }
         }
       } else {
-        top3Comments = <span></span>;
+        top3Comments = '';
       }
      
       allPosts.push(
@@ -100,10 +99,5 @@ const mapStateToProps = state => ({
   feed: state.feed,
 });
 
-const mapDispatchToProps = dispatch => ({
-  getFeed: () => dispatch(getFeed()),
-  incrementLikes: (id) => dispatch(incrementLikes(id)),
-  decrementLikes: (id) => dispatch(decrementLikes(id)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Feed);
+export default connect(mapStateToProps, { ...postActions })(Feed);
+// export default connect(mapStateToProps, { getFeed, incrementLikes, decrementLikes })(Feed);

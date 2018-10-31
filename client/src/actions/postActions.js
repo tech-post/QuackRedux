@@ -28,10 +28,7 @@ export const incrementLikes = (id) => dispatch => {
       'Authorization': localStorage['jwtToken']
     }
   };
-  console.log('token in postAction', localStorage['jwtToken'])
-  // fetch(`/api/posts/like/${id}`, { method: 'post', body: JSON.stringify(), headersConfig})
-  //   .then(res => res.json)
-  //   .then(data => console.log(data))
+  
   axios
     .post(`/api/posts/like/${id}`, params, headersConfig)
     .then(res => dispatch({
@@ -56,7 +53,7 @@ export const decrementLikes = (id) => dispatch => {
       'Authorization': localStorage['jwtToken']
     }
   };
-  console.log('token in postAction', localStorage['jwtToken'])
+  
   axios
     .post(`/api/posts/unlike/${id}`, params, headersConfig)
     .then(res => dispatch({
