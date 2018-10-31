@@ -7,7 +7,7 @@ body {
   height: 100vh;
   align-items: center;
   justify-content: center;
-  /* overflow:hidden; */
+  overflow: scroll;
   font-family: 'Avenir' !important;
 }
 
@@ -45,6 +45,12 @@ code {
   -webkit-box-shadow: 3px 14px 22px -13px rgba(0,0,0,0.43);
   -moz-box-shadow: 3px 14px 22px -13px rgba(0,0,0,0.43);
   box-shadow: 3px 14px 22px -13px rgba(0,0,0,0.43);
+}
+
+.title:hover{
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .App-link {

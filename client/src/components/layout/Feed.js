@@ -11,7 +11,7 @@ class Feed extends Component {
     this.state = {};
   }
 
-  componentWillMount(){
+  componentWillMount() {
     if (this.props.auth.isAuthenticated === false) {
       this.props.history.push('/login');
     }
@@ -28,11 +28,18 @@ class Feed extends Component {
   }
   
   handleClickUp = (e) => {
-    this.props.incrementLikes(e.target.id);
+    const postId = e.target.dataset.postId;
+    this.props.incrementLikes(postId);
   }
   
   handleClickDown = (e) => {
-    this.props.decrementLikes(e.target.id);
+    const postId = e.target.dataset.postId;
+    this.props.decrementLikes(postId);
+  }
+
+  handleSinglePost = (e) => {
+    const postId = e.target.dataset.postId;
+    this.props.history.push('/post/' + postId);
   }
   
   render() {
@@ -50,6 +57,7 @@ class Feed extends Component {
           likes={el.likes} 
           comments={el.comments} 
           date={el.date}
+          handleSinglePost={this.handleSinglePost.bind(this)}
           handleClickUp={this.handleClickUp.bind(this)}
           handleClickDown={this.handleClickDown.bind(this)}
         />
@@ -68,7 +76,7 @@ class Feed extends Component {
   }
 };
 
-const mapStateToProps = state => ({ 
+const mapStateToProps = state => ({
   auth: state.auth,
   feed: state.feed,
 });

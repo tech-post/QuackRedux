@@ -24,14 +24,14 @@ const Box = (props) => {
   return (
     <div className="box">
       <div style={{ display: 'none' }}>user:{props.user}</div>
-      <h2>{props.title}</h2>
+      <h2 className="title" data-post-id={props.id} onClick={e => props.handleSinglePost(e)}>{props.title}</h2>
       <h3>{props.text}</h3>
       <div>{`posted by userId: ${props.user} on ${dateReadable}`}</div>
       <div>{top3Comments}</div>
       <div style={{ display: props.view }}>
-        <span id={props.id} onClick={e => props.handleClickUp(e)}>⬆</span> 
+        <span data-post-id={props.id} onClick={e => props.handleClickUp(e)}>⬆</span>
         <strong> {props.likes.length} </strong>
-        <span id={props.id} onClick={e => props.handleClickDown(e)}>⬇</span> 
+        <span data-post-id={props.id} onClick={e => props.handleClickDown(e)}>⬇</span>
       </div>
     </div>
   )

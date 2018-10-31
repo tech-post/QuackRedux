@@ -12,7 +12,6 @@ class Navbar extends Component {
   }
 
   HandleLinkClick = (e) => {
-    console.log(e.target.dataset.link);
     const link = e.target.dataset.link;
     this.props.history.push('/' + link);
   }
