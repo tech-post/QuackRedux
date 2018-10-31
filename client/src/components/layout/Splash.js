@@ -8,10 +8,10 @@ class Splash extends Component {
         <h2>This is the FullQuack Home Splash Page. Quack Quack!</h2>
         <hr />
         <Link to="/register" className = "btn btn-lg btn-light">
-          Register
+          <button className='submit-button'>Register</button>
         </Link>
         <Link to="/login" className = "btn btn-lg btn-light">
-          Login
+          <button className='submit-button'>Login</button>
         </Link>
       </div>
     )

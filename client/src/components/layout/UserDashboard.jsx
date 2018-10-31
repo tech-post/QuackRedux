@@ -33,7 +33,7 @@ class UserDashboard extends Component {
   render() {
     let myPosts = this.props.dashboard;
     return (
-      <div className="userDashboard" style={{height: '700px', backgroundColor: 'yellow'}}>
+      <div className="userDashboard" style={{height: '700px'}}>
       
         <h1 style={{margin: '20px', fontSize:'1.5em', fontWeight: '700'}}>Welcome, {this.props.auth.user.name}</h1>
 

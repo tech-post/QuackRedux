@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { removeCurrentUser } from '../../actions/authActions';
 import styles from './Navbar.css';
 import UserDashboard from './UserDashboard.jsx';
+import logo from '../../logo1.png';
 
 class Navbar extends Component {
   constructor() {
@@ -31,13 +32,13 @@ class Navbar extends Component {
         <div>{this.props.auth.isAuthenticated !== false ?
           <nav id="nav-bar" style={styles}>
             <div id="logo" onClick={(e) => { this.HandleLinkClick(e); }}>
-              <p data-link="feed">LOGO</p>
+              <div data-link="feed" className='logo'><img style={{height: '80px'}} src={logo}/></div>
             </div>
 
             <input id="search-bar" type="search" placeholder="Search Posts" />
 
             <div id="nav-links">
-              <button>Create Post</button>
+              <button>View Feed</button>
               <button onClick={(e) => { this.HandleClickMyPosts(e); }}>My Posts</button>
               <button onClick={(e) => { this.HandleLogOut(e); }}>Log Out</button>
             </div>
