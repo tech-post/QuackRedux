@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_FEED, CREATE_POST, GET_CURRENT_USER_POSTS, INCREMENT_LIKES, DECREMENT_LIKES, GET_SINGLE_POST  } from './types';
+import { GET_FEED, CREATE_POST, GET_CURRENT_USER_POSTS, INCREMENT_LIKES, DECREMENT_LIKES, GET_SINGLE_POST, DELETE_POST } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
 export const getFeed = () => dispatch => {
@@ -72,6 +72,31 @@ export const createPost = (postData) => ({
   type: CREATE_POST,
   payload: postData
 });
+
+export const deletePost = (id) => dispatch => {
+  const params = {
+    id: id
+  }
+  const headersConfig = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': localStorage['jwtToken']
+    }
+  };
+
+  axios
+    .delete(`/api/posts/${id}`, params, headersConfig)
+    .then(res => dispatch({
+      type: DELETE_POST,
+      payload: res.data
+    }))
+    .catch(err =>
+      dispatch({
+        type: DELETE_POST,
+        payload: err.res
+      })
+    );
+};
 
 export const getMyPosts = (userid) => dispatch => {
     axios

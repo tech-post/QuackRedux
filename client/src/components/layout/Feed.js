@@ -49,6 +49,7 @@ class Feed extends Component {
       allPosts = posts.map((el) => (
         <Box className='box' 
           view='block'
+          deleteButton='none'
           id={el._id} 
           key={el._id} 
           text={el.text} 
