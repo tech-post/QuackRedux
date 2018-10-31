@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_FEED, CREATE_POST, GET_CURRENT_USER_POSTS, INCREMENT_LIKES, DECREMENT_LIKES, GET_SINGLE_POST  } from './types';
+import { GET_FEED, CREATE_POST, GET_CURRENT_USER_POSTS, INCREMENT_LIKES, DECREMENT_LIKES, GET_SINGLE_POST, ADD_NEW_COMMENT } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
 export const getFeed = () => dispatch => {
@@ -10,7 +10,7 @@ export const getFeed = () => dispatch => {
       type: GET_FEED,
       payload: res.data
     }))
-    .catch(err => 
+    .catch(err =>
       dispatch({
         type: GET_FEED,
         payload: err.res
@@ -28,7 +28,7 @@ export const incrementLikes = (id) => dispatch => {
       'Authorization': localStorage['jwtToken']
     }
   };
-  
+
   axios
     .post(`/api/posts/like/${id}`, params, headersConfig)
     .then(res => dispatch({
@@ -53,7 +53,7 @@ export const decrementLikes = (id) => dispatch => {
       'Authorization': localStorage['jwtToken']
     }
   };
-  
+
   axios
     .post(`/api/posts/unlike/${id}`, params, headersConfig)
     .then(res => dispatch({
@@ -74,18 +74,18 @@ export const createPost = (postData) => ({
 });
 
 export const getMyPosts = (userid) => dispatch => {
-    axios
-      .get(`/api/posts/user/${userid}`)
-      .then(res => dispatch({
+  axios
+    .get(`/api/posts/user/${userid}`)
+    .then(res => dispatch({
+      type: GET_CURRENT_USER_POSTS,
+      payload: res.data
+    }))
+    .catch(err =>
+      dispatch({
         type: GET_CURRENT_USER_POSTS,
-        payload: res.data
-      }))
-      .catch(err => 
-        dispatch({
-          type: GET_CURRENT_USER_POSTS,
-          payload: err.res
-        })
-      );
+        payload: err.res
+      })
+    );
 }
 
 export const getSinglePost = (postId) => dispatch => {
@@ -95,9 +95,30 @@ export const getSinglePost = (postId) => dispatch => {
       type: GET_SINGLE_POST,
       payload: res.data
     }))
-    .catch(err => 
+    .catch(err =>
       dispatch({
         type: GET_SINGLE_POST,
+        payload: err.res
+      })
+    );
+}
+
+export const addNewComment = (postId, newComment) => dispatch => {
+  let config = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': localStorage['jwtToken']
+    }
+  }
+  axios
+    .post(`/api/posts/comment/${postId}`, newComment, config)
+    .then(res => dispatch({
+      type: ADD_NEW_COMMENT,
+      payload: res.data
+    }))
+    .catch(err =>
+      dispatch({
+        type: ADD_NEW_COMMENT,
         payload: err.res
       })
     );

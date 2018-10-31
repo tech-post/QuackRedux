@@ -1,10 +1,10 @@
-import { GET_FEED, CREATE_POST, INCREMENT_LIKES, DECREMENT_LIKES, GET_SINGLE_POST } from '../actions/types';
+import { GET_FEED, CREATE_POST, INCREMENT_LIKES, DECREMENT_LIKES, GET_SINGLE_POST, ADD_NEW_COMMENT } from '../actions/types';
 
 const initialState = {};
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
-    
+
     case GET_FEED:
       return action.payload;
 
@@ -30,14 +30,17 @@ export default function(state = initialState, action) {
       }
       return newStateD;
 
-    case CREATE_POST: 
+    case CREATE_POST:
       let postsArray = state.slice();
       postsArray.unshift(action.payload);
       return postsArray;
 
     case GET_SINGLE_POST:
       return action.payload;
-      
+
+    case ADD_NEW_COMMENT:
+      return action.payload;
+
     default:
       return state;
   }
