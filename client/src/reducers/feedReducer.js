@@ -8,26 +8,31 @@ export default function(state = initialState, action) {
       return action.payload;
 
     case INCREMENT_LIKES:
-      let newState1 = state.slice();
-      let element1 = newState1.find((e, i) => e._id === action.payload._id)
-      let index1 = newState1.indexOf(element1);
-      if (index1 !== -1) {
-        newState1[index1] = action.payload;
+      let newStateI = [...state]; // same as line 22
+      if (action.payload) {
+        let elementI = newStateI.find((e, i) => e._id === action.payload._id);
+        let indexI = newStateI.indexOf(elementI);
+        if (indexI !== -1) {
+          newStateI[indexI] = action.payload;
+        }
       }
-      return newState1;
+      return newStateI;
+
     case DECREMENT_LIKES:
-      let newState2 = state.slice();
-      let element2 = newState2.find((e, i) => e._id === action.payload._id)
-      let index2 = newState2.indexOf(element2);
-      if (index2 !== -1) {
-        newState2[index2] = action.payload;
+      let newStateD = state.slice(); // same as line 11
+      if (action.payload) {
+        let elementD = newStateD.find((e, i) => e._id === action.payload._id);
+        let indexD = newStateD.indexOf(elementD);
+        if (indexD !== -1) {
+          newStateD[indexD] = action.payload;
+        }
       }
-      return newState2;
+      return newStateD;
 
     case CREATE_POST: 
-      let postsarray = state.slice();
-      postsarray.push(action.payload);
-      return postsarray;
+      let postsArray = state.slice();
+      postsArray.push(action.payload);
+      return postsArray;
       
     case GET_CURRENT_USER_POSTS:
       return {

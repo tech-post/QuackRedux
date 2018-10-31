@@ -7,6 +7,7 @@ import styles from './Navbar.css';
 class Navbar extends Component {
   constructor() {
     super();
+    this.state = {}
   }
 
   HandleLinkClick = (e) => {
