@@ -24,6 +24,12 @@
   box-shadow: 3px 14px 22px -13px rgba(0,0,0,0.43);
 }
 
+.title:hover{
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .App-link {
   color: #61dafb;
 }

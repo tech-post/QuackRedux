@@ -9,7 +9,7 @@ class Feed extends Component {
     this.state = {};
   }
 
-  componentWillMount(){
+  componentWillMount() {
     if (this.props.auth.isAuthenticated === false) {
       this.props.history.push('/login');
     }
@@ -47,6 +47,11 @@ class Feed extends Component {
     // })
   }
 
+  handleSinglePost = (e) => {
+    const postId = e.target.dataset.postId;
+    this.props.history.push('/post/' + postId);
+  }
+
   render() {
 
     let allPosts = [];
@@ -64,12 +69,13 @@ class Feed extends Component {
       let dateReadable = dateObject.toDateString();
       // We haven't placed dateReadable in the div yet (still working on layout UX), but it's ready to insert.
       allPosts.push(
-        <div key={i} className="questionBox"> 
-          <span id={posts[i]._id} onClick={e => this.handleClickUp(e)}>⬆</span> 
+        <div key={i} className="questionBox">
+          <span id={posts[i]._id} onClick={e => this.handleClickUp(e)}>⬆</span>
           <strong> {posts[i].likes.length} </strong>
-          <span id={posts[i]._id} onClick={e => this.handleClickDown(e)}>⬇</span> 
-          <span >{posts[i].name}<br></br>{posts[i].tags}<br></br>{posts[i].text}</span><br></br>
-          <span className='question' >{dateReadable}<br></br>{posts[i].user}<br></br>{posts[i].comments}<hr></hr></span>
+          <span id={posts[i]._id} onClick={e => this.handleClickDown(e)}>⬇</span>
+          <span className="title" data-post-id={posts[i]._id} onClick={e => this.handleSinglePost(e)}>{posts[i].name}</span>
+          <span><br></br>{posts[i].tags}<br></br>{posts[i].text}</span><br></br>
+          <span className='question'>{dateReadable}<br></br>{posts[i].user}<br></br>{posts[i].comments}<hr></hr></span>
         </div>)
     }
 
@@ -83,7 +89,7 @@ class Feed extends Component {
   }
 };
 
-const mapStateToProps = state => ({ 
+const mapStateToProps = state => ({
   auth: state.auth,
   feed: state.feed,
 });
