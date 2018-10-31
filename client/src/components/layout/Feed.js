@@ -27,13 +27,13 @@ class Feed extends Component {
   }
 
   handleClickUp = (e) => {
-    console.log(e.target.id);
-    this.props.incrementLikes(e.target.id);
+    const postId = e.target.dataset.postId;
+    this.props.incrementLikes(postId);
   }
 
   handleClickDown = (e) => {
-    console.log(e.target.id);
-    this.props.decrementLikes(e.target.id);
+    const postId = e.target.dataset.postId;
+    this.props.decrementLikes(postId);
   }
 
   handleSinglePost = (e) => {
@@ -66,12 +66,12 @@ class Feed extends Component {
       }
      
       allPosts.push(
-        <div key={i} className="questionBox"> 
-          <h3 id={posts[i]._id} onClick={e => this.handleClickUp(e)}>{posts[i].title}</h3>
+        <div key={posts[i]._id} className="questionBox"> 
+          <h3 data-post-id={posts[i]._id} className="title" onClick={e => this.handleSinglePost(e)}>{posts[i].title}</h3>
           <h2>{posts[i].text}</h2>
-          <span id={posts[i]._id} onClick={e => this.handleClickUp(e)}>⬆</span> 
+          <span data-post-id={posts[i]._id} onClick={e => this.handleClickUp(e)}>⬆</span> 
           <strong> {posts[i].likes.length} </strong>
-          <span id={posts[i]._id} onClick={e => this.handleClickDown(e)}>⬇</span> 
+          <span data-post-id={posts[i]._id} onClick={e => this.handleClickDown(e)}>⬇</span> 
           <br></br>
           <span className='question' >{`posted by userId: ${posts[i].user} on ${dateReadable}`}<br></br><br></br>{top3Comments}<hr></hr></span>
         </div>)

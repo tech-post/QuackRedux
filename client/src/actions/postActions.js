@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_FEED, CREATE_POST, GET_CURRENT_USER_POSTS, INCREMENT_LIKES, DECREMENT_LIKES  } from './types';
+import { GET_FEED, CREATE_POST, GET_CURRENT_USER_POSTS, INCREMENT_LIKES, DECREMENT_LIKES, GET_SINGLE_POST  } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
 export const getFeed = () => dispatch => {
@@ -86,5 +86,20 @@ export const getMyPosts = (userid) => dispatch => {
           payload: err.res
         })
       );
+}
+
+export const getSinglePost = (postId) => dispatch => {
+  axios
+    .get(`/api/posts/${postId}`)
+    .then(res => dispatch({
+      type: GET_SINGLE_POST,
+      payload: res.data
+    }))
+    .catch(err => 
+      dispatch({
+        type: GET_SINGLE_POST,
+        payload: err.res
+      })
+    );
 }
 

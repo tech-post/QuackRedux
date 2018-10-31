@@ -1,4 +1,4 @@
-import { GET_FEED, CREATE_POST, INCREMENT_LIKES, DECREMENT_LIKES } from '../actions/types';
+import { GET_FEED, CREATE_POST, INCREMENT_LIKES, DECREMENT_LIKES, GET_SINGLE_POST } from '../actions/types';
 
 const initialState = {};
 
@@ -34,6 +34,9 @@ export default function(state = initialState, action) {
       let postsArray = state.slice();
       postsArray.unshift(action.payload);
       return postsArray;
+
+    case GET_SINGLE_POST:
+      return action.payload;
       
     default:
       return state;
