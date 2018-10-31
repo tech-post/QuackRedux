@@ -13,7 +13,7 @@ export const getFeed = () => dispatch => {
     .catch(err => 
       dispatch({
         type: GET_FEED,
-        payload: err.response.data
+        payload: err.res
       })
     );
 };
@@ -28,10 +28,7 @@ export const incrementLikes = (id) => dispatch => {
       'Authorization': localStorage['jwtToken']
     }
   };
-  console.log('token in postAction', localStorage['jwtToken'])
-  // fetch(`/api/posts/like/${id}`, { method: 'post', body: JSON.stringify(), headersConfig})
-  //   .then(res => res.json)
-  //   .then(data => console.log(data))
+  
   axios
     .post(`/api/posts/like/${id}`, params, headersConfig)
     .then(res => dispatch({
@@ -41,7 +38,7 @@ export const incrementLikes = (id) => dispatch => {
     .catch(err =>
       dispatch({
         type: INCREMENT_LIKES,
-        payload: err
+        payload: err.res
       })
     );
 };
@@ -56,7 +53,7 @@ export const decrementLikes = (id) => dispatch => {
       'Authorization': localStorage['jwtToken']
     }
   };
-  console.log('token in postAction', localStorage['jwtToken'])
+  
   axios
     .post(`/api/posts/unlike/${id}`, params, headersConfig)
     .then(res => dispatch({
@@ -66,7 +63,7 @@ export const decrementLikes = (id) => dispatch => {
     .catch(err =>
       dispatch({
         type: DECREMENT_LIKES,
-        payload: err
+        payload: err.res
       })
     );
 };
@@ -76,10 +73,9 @@ export const createPost = (postData) => ({
   payload: postData
 });
 
-export const getMyPosts = () => dispatch => 
-{
+export const getMyPosts = (userid) => dispatch => {
     axios
-      .get('/api/posts')//create a new route for find by userID?
+      .get(`/api/posts/user/${userid}`)
       .then(res => dispatch({
         type: GET_CURRENT_USER_POSTS,
         payload: res.data
@@ -87,7 +83,7 @@ export const getMyPosts = () => dispatch =>
       .catch(err => 
         dispatch({
           type: GET_CURRENT_USER_POSTS,
-          payload: err.response.data
+          payload: err.res
         })
       );
 }

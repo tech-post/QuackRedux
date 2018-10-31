@@ -30,13 +30,13 @@ class PostBox extends Component {
 
   handleSubmit(e) {
       const newPostObj = {
-      name: this.state.postTitle,
+      title: this.state.postTitle,
       text: this.state.postBody
       // user: this.props.auth.user.id
       // this.props.auth.isAuthenticated
     } 
 
-    var config = {
+    let config = {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': localStorage['jwtToken']
