@@ -36,7 +36,7 @@ class PostBox extends Component {
       // this.props.auth.isAuthenticated
     } 
 
-    var config = {
+    let config = {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': localStorage['jwtToken']

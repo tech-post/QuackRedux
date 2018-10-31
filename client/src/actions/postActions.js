@@ -76,10 +76,9 @@ export const createPost = (postData) => ({
   payload: postData
 });
 
-export const getMyPosts = () => dispatch => 
-{
+export const getMyPosts = (userid) => dispatch => {
     axios
-      .get('/api/posts')//create a new route for find by userID?
+      .get(`/api/posts/user/${userid}`)
       .then(res => dispatch({
         type: GET_CURRENT_USER_POSTS,
         payload: res.data
