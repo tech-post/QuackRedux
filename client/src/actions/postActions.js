@@ -13,7 +13,7 @@ export const getFeed = () => dispatch => {
     .catch(err => 
       dispatch({
         type: GET_FEED,
-        payload: err.response.data
+        payload: err.res
       })
     );
 };
@@ -41,7 +41,7 @@ export const incrementLikes = (id) => dispatch => {
     .catch(err =>
       dispatch({
         type: INCREMENT_LIKES,
-        payload: err
+        payload: err.res
       })
     );
 };
@@ -66,7 +66,7 @@ export const decrementLikes = (id) => dispatch => {
     .catch(err =>
       dispatch({
         type: DECREMENT_LIKES,
-        payload: err
+        payload: err.res
       })
     );
 };
@@ -87,7 +87,7 @@ export const getMyPosts = () => dispatch =>
       .catch(err => 
         dispatch({
           type: GET_CURRENT_USER_POSTS,
-          payload: err.response.data
+          payload: err.res
         })
       );
 }
