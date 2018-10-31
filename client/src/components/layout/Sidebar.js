@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 
 export default class Sidebar extends Component {
   render() {
-    
+
     return (
-      <div class="sidenav">
+      <div className="sidenav">
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#clients">Clients</a>
