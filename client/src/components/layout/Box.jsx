@@ -33,6 +33,7 @@ const Box = (props) => {
         <strong> {props.likes.length} </strong>
         <span data-post-id={props.id} onClick={e => props.handleClickDown(e)}>⬇</span>
       </div>
+      <div style={{ display: props.deleteButton }}><button data-post-id={props.id} onClick={e => props.handleDeletePost(e)}>Delete</button></div>
     </div>
   )
 }

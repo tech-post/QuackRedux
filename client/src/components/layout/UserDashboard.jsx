@@ -21,13 +21,11 @@ class UserDashboard extends Component {
   componentDidMount() {
     this.props.getMyPosts(this.props.auth.user['id']);
   }
-      
-  handleClickUp = (e) => {
-    this.props.incrementLikes(e.target.id);
-  }
-  
-  handleClickDown = (e) => {
-    this.props.decrementLikes(e.target.id);
+
+  handleDeletePost = (e) => {
+    const postId = e.target.dataset.postId;
+    console.log(postId);
+    this.props.deletePost(postId);
   }
         
   render() {
@@ -37,9 +35,10 @@ class UserDashboard extends Component {
       
         <h1 style={{margin: '20px', fontSize:'1.5em', fontWeight: '700'}}>Welcome, {this.props.auth.user.name}</h1>
 
-        {myPosts.map((el) => (
+        {myPosts.map(el => (
           <Box className='box' 
             view='none'
+            deleteButton='block'
             id={el._id} 
             key={el._id} 
             text={el.text} 
@@ -48,8 +47,7 @@ class UserDashboard extends Component {
             likes={el.likes} 
             comments={el.comments} 
             date={el.date}
-            handleClickUp={this.handleClickUp.bind(this)}
-            handleClickDown={this.handleClickDown.bind(this)}
+            handleDeletePost={this.handleDeletePost.bind(this)}
         />
         ))}
       </div>
