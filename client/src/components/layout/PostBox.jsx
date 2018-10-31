@@ -30,7 +30,7 @@ class PostBox extends Component {
 
   handleSubmit(e) {
       const newPostObj = {
-      name: this.state.postTitle,
+      title: this.state.postTitle,
       text: this.state.postBody
       // user: this.props.auth.user.id
       // this.props.auth.isAuthenticated
