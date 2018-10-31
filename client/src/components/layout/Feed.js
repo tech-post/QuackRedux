@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 // import { getFeed, incrementLikes, decrementLikes } from '../../actions/postActions';
 import * as postActions from '../../actions/postActions';
 import PostBox from './PostBox.jsx';
+import Box from './Box.jsx';
 
 class Feed extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
@@ -25,12 +26,12 @@ class Feed extends Component {
       }
     }
   }
-
+  
   handleClickUp = (e) => {
     const postId = e.target.dataset.postId;
     this.props.incrementLikes(postId);
   }
-
+  
   handleClickDown = (e) => {
     const postId = e.target.dataset.postId;
     this.props.decrementLikes(postId);
@@ -40,46 +41,32 @@ class Feed extends Component {
     const postId = e.target.dataset.postId;
     this.props.history.push('/post/' + postId);
   }
-
+  
   render() {
-
     let allPosts = [];
     let posts = this.props.feed;
-    console.log(posts);
-    for (let i = 0; i < posts.length; i++) {
-      
-      let date = new Date(Date.parse(posts[i].date));
-      let dateObject = new Date(Date.parse(date));
-      let dateReadable = dateObject.toDateString();
-
-      let top3Comments = [];
-      if (posts[i].comments.length > 0) {
-        for (let j = 0; j < 3; j++) {
-          if (!!posts[i].comments[j]) {
-            top3Comments.push(
-              <div key={j} >{posts[i].comments[j].text}</div>
-            )
-          }
-        }
-      } else {
-        top3Comments = '';
-      }
-     
-      allPosts.push(
-        <div key={posts[i]._id} className="questionBox"> 
-          <h3 data-post-id={posts[i]._id} className="title" onClick={e => this.handleSinglePost(e)}>{posts[i].title}</h3>
-          <h2>{posts[i].text}</h2>
-          <span data-post-id={posts[i]._id} onClick={e => this.handleClickUp(e)}>⬆</span> 
-          <strong> {posts[i].likes.length} </strong>
-          <span data-post-id={posts[i]._id} onClick={e => this.handleClickDown(e)}>⬇</span> 
-          <br></br>
-          <span className='question' >{`posted by userId: ${posts[i].user} on ${dateReadable}`}<br></br><br></br>{top3Comments}<hr></hr></span>
-        </div>)
+    if (Array.isArray(posts)) {
+      allPosts = posts.map((el) => (
+        <Box className='box' 
+          view='block'
+          id={el._id} 
+          key={el._id} 
+          text={el.text} 
+          title={el.title} 
+          user={el.user} 
+          likes={el.likes} 
+          comments={el.comments} 
+          date={el.date}
+          handleSinglePost={this.handleSinglePost.bind(this)}
+          handleClickUp={this.handleClickUp.bind(this)}
+          handleClickDown={this.handleClickDown.bind(this)}
+        />
+    ))
     }
 
     return (
       <div className="feed-container">
-        <h2><strong>{this.props.auth.user.name} successfully Logged in!</strong></h2>
+        <h2><strong>Hello {this.props.auth.user.name} !</strong></h2>
         <br></br>
         <PostBox />
         <hr></hr>

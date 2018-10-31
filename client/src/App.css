@@ -1,7 +1,8 @@
-*{
+* {
   margin: 0;
 }
-body{
+
+body {
   background: #1D9FD1;
   height: 100vh;
   align-items: center;
@@ -12,6 +13,12 @@ body{
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.feed-container {
+  left: 220px;
+  position: relative;
+  width: 80%;
 }
 
 .App {
