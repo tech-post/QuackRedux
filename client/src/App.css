@@ -26,6 +26,11 @@ h1 {
   font-family: 'Avenir';
 }
 
+.userDashboard {
+  left: 220px;
+  position: relative;
+}
+
 .App {
   text-align: center;
 }
