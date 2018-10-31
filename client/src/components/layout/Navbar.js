@@ -8,6 +8,7 @@ import UserDashboard from './UserDashboard.jsx';
 class Navbar extends Component {
   constructor() {
     super();
+    this.state = {}
   }
 
   HandleLinkClick = (e) => {
