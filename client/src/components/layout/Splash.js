@@ -5,8 +5,8 @@ class Splash extends Component {
   render() {
     return (
       <div className="splash-container">
-        <h2>This is the FullQuack Home Splash Page. Quack Quack!</h2>
-        <hr />
+        <h2>Quack Quack!</h2>
+        
         <Link to="/register" className = "btn btn-lg btn-light">
           <button className='submit-button'>Register</button>
         </Link>

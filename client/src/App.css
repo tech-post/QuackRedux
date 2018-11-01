@@ -6,7 +6,6 @@ body {
   height: 100vh;
   align-items: center;
   justify-content: center;
-  overflow: scroll;
   font-family: 'Avenir';
   /* font-size: 14px; */
 }
@@ -24,11 +23,17 @@ h1 {
   position: relative;
   width: 80%;
   font-family: 'Avenir';
+  overflow: scroll;
+  max-height: 500px;
 }
 
 .userDashboard {
   left: 220px;
   position: relative;
+  width: 80%;
+  font-family: 'Avenir';
+  overflow: scroll;
+  max-height: 500px;
 }
 
 .App {
@@ -115,3 +120,11 @@ textarea:focus {
   outline: none;
 }
 
+.splash-container{
+  position: relative;
+  top: 200px;
+}
+
+.arrows{
+  cursor: pointer;
+}
