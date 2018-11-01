@@ -29,10 +29,11 @@ const Box = (props) => {
       <div>{`posted by userId: ${props.user} on ${dateReadable}`}</div>
       <div>{top3Comments}</div>
       <div style={{ display: props.view }}>
-        <span data-post-id={props.id} onClick={e => props.handleClickUp(e)}>⬆</span>
+        <span className="arrows" data-post-id={props.id} onClick={e => props.handleClickUp(e)}>⬆</span>
         <strong> {props.likes.length} </strong>
-        <span data-post-id={props.id} onClick={e => props.handleClickDown(e)}>⬇</span>
+        <span className="arrows" data-post-id={props.id} onClick={e => props.handleClickDown(e)}>⬇</span>
       </div>
+      <div style={{ display: props.deleteButton }}><button data-post-id={props.id} onClick={e => props.handleDeletePost(e)}>Delete</button></div>
     </div>
   )
 }

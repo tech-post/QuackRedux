@@ -32,8 +32,6 @@ class PostBox extends Component {
       const newPostObj = {
       title: this.state.postTitle,
       text: this.state.postBody
-      // user: this.props.auth.user.id
-      // this.props.auth.isAuthenticated
     } 
 
     let config = {
@@ -64,13 +62,26 @@ class PostBox extends Component {
   render() {
     
     return (
-      <div className="postBox">
-        <h2>Create a Post</h2>
-        Post Title:
-          <textarea value={this.state.postTitle} name='postTitle' onChange={(e) => {this.handleChange(e)}} />
-        Post Content:
-          <textarea value={this.state.postBody} name='postBody' onChange={(e) => {this.handleChange(e)}} />
-          <button onClick={() => this.handleSubmit()}>Post</button>
+      <div className='wrapper'>
+        <div className="postBox">
+        
+          <div><h3>Hello {this.props.auth.user.name}! Create a post.</h3></div>
+          <div className='postBoxTop'>
+            <div className='postBoxLeft'>
+              <div>Title:</div>
+              <div>Content:</div>
+            </div>
+            <div className='postBoxRight'>
+              <textarea value={this.state.postTitle} name='postTitle' onChange={(e) => {this.handleChange(e)}} />
+              <textarea value={this.state.postBody} name='postBody' onChange={(e) => {this.handleChange(e)}} />
+            </div>  
+          </div>
+
+          <div className='postBoxBottom'>
+            <button class='submit-button' onClick={() => this.handleSubmit()}>Post</button>
+          </div>
+
+        </div>
       </div>
     )
   }

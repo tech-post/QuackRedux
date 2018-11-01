@@ -49,6 +49,7 @@ class Feed extends Component {
       allPosts = posts.map((el) => (
         <Box className='box' 
           view='block'
+          deleteButton='none'
           id={el._id} 
           key={el._id} 
           text={el.text} 
@@ -66,8 +67,6 @@ class Feed extends Component {
 
     return (
       <div className="feed-container">
-        <h2><strong>Hello {this.props.auth.user.name} !</strong></h2>
-        <br></br>
         <PostBox />
         <hr></hr>
         {allPosts}

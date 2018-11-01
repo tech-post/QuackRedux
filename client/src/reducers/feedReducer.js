@@ -9,7 +9,7 @@ export default function (state = initialState, action) {
       return action.payload;
 
     case INCREMENT_LIKES:
-      let newStateI = [...state]; // same as line 22
+      let newStateI = [...state]; // same as line 23
       if (action.payload) {
         let elementI = newStateI.find((e, i) => e._id === action.payload._id);
         let indexI = newStateI.indexOf(elementI);
@@ -20,7 +20,7 @@ export default function (state = initialState, action) {
       return newStateI;
 
     case DECREMENT_LIKES:
-      let newStateD = state.slice(); // same as line 11
+      let newStateD = state.slice(); // same as line 12
       if (action.payload) {
         let elementD = newStateD.find((e, i) => e._id === action.payload._id);
         let indexD = newStateD.indexOf(elementD);
